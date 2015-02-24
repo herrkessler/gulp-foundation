@@ -274,7 +274,7 @@ gulp.task('critical', ['build', 'copystyles'], function () {
 });
 
 // -------------------------------------------------------------  
-// --- Deploy via FTP---
+// --- Deploy via FTP ---
 // -------------------------------------------------------------
 
 gulp.task('deploy', ['build'], function () {

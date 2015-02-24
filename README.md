@@ -1,6 +1,6 @@
 # gulp-foundation
 
-### a basic asset setup for dev and prod with gulp, foundation, bourbon, fontawesome, etc. working even with IE8
+### a basic asset setup for dev && prod with gulp, foundation, bourbon, fontawesome, etc. working even with IE8
 
 ## Getting Started
 
@@ -36,7 +36,7 @@ A number of other task aliases are available, such as:
 - `gulp desktop`
 - `gulp critical`
 
-for testing Google Page Speed Insights or Inline critical CSS...
+for testing Google Page Speed Insights or Inline critical CSS... just have a look at [the gulpfile.js](https://github.com/herrkessler/gulp-foundation/blob/master/gulpfile.js)
 
 ---
 
