@@ -1,0 +1,40 @@
+{
+  "name": "gulp",
+  "version": "0.0.1",
+  "description": "Jade, Sass, Livereload and static server",
+  "author": "Sebastian Kessler",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-util": "*",
+    "gulp-uglify": "*",
+    "gulp-csso": "*",
+    "gulp-sass": "*",
+    "gulp-jade": "*",
+    "gulp-livereload": "*",
+    "gulp-imagemin": "*",
+    "gulp-gzip": "*",
+    "gulp-include": "*",
+    "gulp-ftp": "*",
+    "gulp-rename": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-autoprefixer": "*",
+    "critical": "*",
+    "imagemin-pngcrush": "*",
+    "tiny-lr": "*",
+    "express": "*",
+    "node-neat": "*",
+    "node-bourbon": "*",
+    "psi": "*",
+    "marked": "*"
+  },
+  "dependencies": {
+    "express": "^4.10.4",
+    "gulp-concat": "^2.4.2",
+    "gulp-jade": "^0.6.1",
+    "gulp-requirejs": "^0.1.3",
+    "gulp-uglify": "^0.3.2",
+    "gulp-util": "^2.2.20",
+    "tiny-lr": "0.0.9"
+  }
+}

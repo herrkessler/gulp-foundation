@@ -1,0 +1,79 @@
+extends ../layout/_layout
+block content
+
+  .row
+    .columns.large-12
+      h1 Grid with Gutter
+  .row
+    - for (var x = 0; x < 6; x++)
+      .columns.small-12.medium-4.large-2
+        .inner-wrapper
+          p 20%
+  .row
+    - for (var x = 0; x < 4; x++)
+      .columns.small-12.medium-6.large-3
+        .inner-wrapper
+          p 25%
+  .row
+    - for (var x = 0; x < 3; x++)
+      .columns.small-12.medium-6.large-4
+        .inner-wrapper
+          p 33%
+  .row
+    - for (var x = 0; x < 2; x++)
+      .columns.small-12.medium-6
+        .inner-wrapper
+          p 50%
+  .row
+    - for (var x = 0; x < 1; x++)
+      .columns.large-12
+        .inner-wrapper
+          p 100%
+
+  .row
+    .columns.large-12
+      h1 Grid without Gutter
+  .row.medium-collapse
+    - for (var x = 0; x < 6; x++)
+      .columns.small-12.medium-4.large-2
+        .inner-wrapper
+          p 20%
+  .row.medium-collapse
+    - for (var x = 0; x < 4; x++)
+      .columns.small-12.medium-6.large-3
+        .inner-wrapper
+          p 25%
+  .row.medium-collapse
+    - for (var x = 0; x < 3; x++)
+      .columns.small-12.medium-6.large-4
+        .inner-wrapper
+          p 33%
+  .row.medium-collapse
+    - for (var x = 0; x < 2; x++)
+      .columns.small-12.medium-6
+        .inner-wrapper
+          p 50%
+  .row.medium-collapse
+    - for (var x = 0; x < 1; x++)
+      .columns.large-12
+        .inner-wrapper
+          p 100%
+
+  .row
+    .columns.large-12
+      h1 Ich bin eine H1
+      h2 Ich bin eine H2
+      h3 Ich bin eine H3
+      h4 Ich bin eine H4
+      h5 Ich bin eine H5
+      p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+  .row
+    - for (var x = 0; x < 4; x++)
+      .columns.small-12.medium-3
+        img#bild.bild(src='assets/images/example.jpg', data-attr='assets/images/example.jpg')
+
+  .row
+    - for (var x = 0; x < 3; x++)
+      .columns.small-12.medium-4
+        img#bild.bild(src='assets/images/jack.jpg', data-attr='assets/images/jack.jpg')

@@ -1,0 +1,46 @@
+// -----------------------------------------------------------------------
+// General Styles
+// -----------------------------------------------------------------------
+
+* {
+  &:after, &:before {
+    @include box-sizing(border-box);
+  }
+}
+
+body, html {
+  width: 100%;
+}
+
+body {
+  position: relative;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+// -----------------------------------------------------------------------
+// Specific Styles
+// -----------------------------------------------------------------------
+
+.columns {
+  .inner-wrapper {
+    min-height: 200px;
+    p {
+      @include total-center;
+    }
+  }
+  margin-bottom: $default-margin;
+  &:nth-child(odd) {
+    .inner-wrapper {
+      background: silver;
+    }
+  }
+  &:nth-child(even) {
+    .inner-wrapper {
+      background: grey;
+    }
+  }
+}

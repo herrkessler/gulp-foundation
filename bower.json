@@ -1,0 +1,33 @@
+{
+  "name": "gulp-foundation",
+  "version": "0.0.1",
+  "authors": [
+    "Sebastian Kessler <sebastian@herrkessler.de>"
+  ],
+  "description": "A basic asset setup for dev and prod with Gulp and Foundation, down to IE8",
+  "main": "gulpfile.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "gulp",
+    "foundation",
+    "jquery",
+    "bourbon",
+    "imagemin",
+    "jade",
+    "express",
+    "livereload",
+    "and more..."
+  ],
+  "license": "MIT",
+  "homepage": "http://www.herrkessler.de",
+  "devDependencies": {
+    "fontawesome": "~4.3.0",
+    "jquery": "~1.11.2",
+    "html5shiv": "~3.7.2",
+    "selectivizr": "~1.0.2",
+    "foundation": "~5.5.1",
+    "slick.js": "~1.4.1"
+  }
+}

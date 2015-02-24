@@ -1,0 +1,110 @@
+// -----------------------------------------------------------------------
+// 100% Mixin
+// -----------------------------------------------------------------------
+
+@mixin cover-all {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// -----------------------------------------------------------------------
+// Center Mixins
+// -----------------------------------------------------------------------
+
+@mixin total-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+@mixin horizontal-center {
+  position: absolute;
+  left: 50%;
+  @include transform(translateX(-50%));
+}
+
+// -----------------------------------------------------------------------
+// Text Mixins
+// -----------------------------------------------------------------------
+
+@mixin word-wrap() {
+  word-break:     break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens:    auto;
+  hyphens:         auto;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// -----------------------------------------------------------------------
+// Color Mixins
+// -----------------------------------------------------------------------
+
+@function black($opacity) {
+  @return rgba(black, $opacity)
+}
+
+@function white($opacity) {
+  @return rgba(white, $opacity)
+}
+
+// -----------------------------------------------------------------------
+// Translate Transform Mixin
+// -----------------------------------------------------------------------
+
+@function prefix($property, $prefixes: (webkit moz o ms)) {
+    $vendor-prefixed-properties: transform background-clip background-size;
+    $result: ();
+    @each $prefix in $prefixes {
+       @if index($vendor-prefixed-properties, $property) {
+         $property: -#{$prefix}-#{$property}
+       }
+       $result: append($result, $property);
+    }
+    @return $result;
+}
+ 
+@function trans-prefix($transition, $prefix: moz) {
+    $prefixed: ();
+    @each $trans in $transition {
+        $prop-name: nth($trans, 1);
+        $vendor-prop-name: prefix($prop-name, $prefix);
+        $prop-vals: nth($trans, 2);
+        $prefixed: append($prefixed, ($vendor-prop-name $prop-vals), comma);
+    }
+    
+    @return $prefixed;
+}
+
+@mixin transition($values...) { 
+    $transitions: ();
+    @each $declaration in $values {
+      $prop: nth($declaration, 1);
+      $prop-opts: ();
+      $length: length($declaration);
+      @for $i from 2 through $length {
+          $prop-opts: append($prop-opts, nth($declaration, $i));   
+      }
+      $trans: ($prop, $prop-opts);
+      $transitions: append($transitions, $trans, comma);
+    }
+      
+    -webkit-transition: trans-prefix($transitions, webkit);
+    -moz-transition: trans-prefix($transitions, moz);
+    -o-transition: trans-prefix($transitions, o);
+    transition: $values;
+}
