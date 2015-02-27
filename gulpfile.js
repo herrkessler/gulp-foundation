@@ -9,7 +9,7 @@ var gulp        = require('gulp'),
     uglify      = require('gulp-uglify'),
     jade        = require('gulp-jade'),
     concat      = require('gulp-concat'),
-    livereload  = require('gulp-livereload'),
+    // livereload  = require('gulp-livereload'),
     imagemin    = require('gulp-imagemin'),
     gzip        = require('gulp-gzip'),
     ftp         = require('gulp-ftp'),
@@ -30,7 +30,9 @@ var gulp        = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     site        = 'http://herrkessler.de',
     key         = '',
-    server      = tinylr();
+    server      = tinylr(),
+    browserSync = require('browser-sync'),
+    reload      = browserSync.reload;
 
 // -------------------------------------------------------------  
 // --- Asset Paths src/dist/build ---
@@ -100,6 +102,14 @@ var fontFiles = [
 // --- Basic Tasks ---
 // -------------------------------------------------------------
 
+gulp.task('browser-sync', function() {
+  browserSync({
+    server: {
+      baseDir: "dist/"
+    }
+  });
+});
+
 gulp.task('css', function() {
 
   var onError = function(err) {
@@ -111,7 +121,7 @@ gulp.task('css', function() {
     })(err);
     this.emit('end');
   };
-  
+
   return gulp.src(paths.styles.src + '*.scss')
     .pipe(plumber({errorHandler: onError}))
     .pipe(sourcemaps.init())
@@ -124,7 +134,7 @@ gulp.task('css', function() {
     }))
     .pipe(sourcemaps.write())
     .pipe( gulp.dest(paths.styles.dist) )
-    .pipe( livereload( server ));
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('js', function() {
@@ -132,25 +142,25 @@ gulp.task('js', function() {
     .pipe( include() )
     .pipe( concat('all.js'))
     .pipe( gulp.dest(paths.scripts.dist))
-    .pipe( livereload( server ));
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('ie', function() {
   return gulp.src(ieFiles)
     .pipe( gulp.dest(paths.scripts.dist + '/ie/'))
-    .pipe( livereload( server ));
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('images', function() {
   return gulp.src(paths.images.src + '**/*')
     .pipe( gulp.dest(paths.images.dist))
-    .pipe( livereload( server ));
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('fonts', function() {
   return gulp.src(fontFiles)
     .pipe( gulp.dest(paths.fonts.dist))
-    .pipe( livereload( server ));
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('templates', function() {
@@ -159,7 +169,7 @@ gulp.task('templates', function() {
       pretty: true
     }))
     .pipe(gulp.dest('dist/'))
-    .pipe( livereload( server ));
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('express', function() {
@@ -182,7 +192,7 @@ gulp.task('watch', function () {
   });
 });
 
-gulp.task('default', ['js', 'ie', 'images', 'fonts', 'css','templates','express','watch']);
+gulp.task('default', ['browser-sync', 'js', 'ie', 'images', 'fonts', 'css','templates','express','watch']);
 
 // -------------------------------------------------------------  
 // --- Production Build Tasks ---
