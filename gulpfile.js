@@ -24,6 +24,8 @@ var gulp        = require('gulp'),
     critical    = require('critical'),
     rename      = require('gulp-rename'),
     sourcemaps  = require('gulp-sourcemaps'),
+    plumber     = require('gulp-plumber'),
+    notify      = require('gulp-notify'),
     psi         = require('psi'),
     autoprefixer = require('gulp-autoprefixer'),
     site        = 'http://herrkessler.de',
@@ -99,16 +101,26 @@ var fontFiles = [
 // -------------------------------------------------------------
 
 gulp.task('css', function() {
+
+  var onError = function(err) {
+    notify.onError({
+      title:    "Gulp",
+      subtitle: "Failure!",
+      message:  "Error: <%= error.message %>",
+      sound:    "Beep"
+    })(err);
+    this.emit('end');
+  };
+  
   return gulp.src(paths.styles.src + '*.scss')
+    .pipe(plumber({errorHandler: onError}))
     .pipe(sourcemaps.init())
-    .pipe( 
-      sass( { 
-        includePaths: cssFiles.concat(neat),
-        errLogToConsole: true
-      } ) )
+    .pipe(sass({
+      includePaths: cssFiles.concat(neat)
+    }))
     .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
+      browsers: ['last 2 versions'],
+      cascade: false
     }))
     .pipe(sourcemaps.write())
     .pipe( gulp.dest(paths.styles.dist) )

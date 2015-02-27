@@ -1,7 +1,7 @@
 {
   "name": "gulp",
   "version": "0.0.1",
-  "description": "Jade, Sass, Livereload and static server",
+  "description": "Jade, Sass, Livereload, Foundation and static server",
   "author": "Sebastian Kessler",
   "devDependencies": {
     "gulp": "*",
@@ -19,6 +19,8 @@
     "gulp-rename": "*",
     "gulp-sourcemaps": "*",
     "gulp-autoprefixer": "*",
+    "gulp-notify": "*",
+    "gulp-plumber": "*",
     "critical": "*",
     "imagemin-pngcrush": "*",
     "tiny-lr": "*",
